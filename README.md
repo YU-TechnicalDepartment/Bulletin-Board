@@ -39,7 +39,7 @@ return ContentService.createTextoutput（"投稿が完了しました！"）；
 デプロイ>新しいデプロイ>デプロイタイプ>ウェブアプリ>アクセスできるユーザー>全員>デプロイ  
 と操作し、デプロイが更新されたら、ウェブアプリのURLをコピーしておきます。
 #### index.htmlの更新
-43行目のコードを、以下に変更します。
+43行目のプログラムを、以下に変更します。
 ```
 <form id="postForm" action="さっきコピーしたURL" method="POST">
 ```
@@ -47,3 +47,5 @@ return ContentService.createTextoutput（"投稿が完了しました！"）；
 ### 列の準備
 1行目からはデータを抽出しませんのでわかりやすい列を作っておきます。
 ![列の見本](イメージ図)
+### GitHubPageを公開
+GitHubPageを公開して完成です。
