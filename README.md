@@ -35,5 +35,5 @@ sheet. appendRow([date, username, content]) ;
 return ContentService.createTextoutput（"投稿が完了しました！"）；
 ｝
 ```
-### 列の準備
-1行目からはデータを抽出しませんのでわかりやすい列を作っておきます。
+また、1行目からはデータを抽出しませんのでわかりやすい列を作っておきます。
+![列の見本](イメージ図)
