@@ -19,5 +19,19 @@
 #### Apps Scriptを作成
 スプレッドシートで、Apps Scriptを作成します。プログラムは、以下を入力します。
 ```
-これ
+function doGet(e) {
+var sheet = SpreadsheetApp.getActiveSpreadsheet) .getActiveSheet();
+var data = sheet.getDataRange() .getValues();
+var jsonData = JSON.stringify(data) ;
+return ContentService.createTextOutput(jsonData) .setMimeType(ContentService.MimeType.
+JSON) ;
+｝
+function doPost (e) {
+var sheet = SpreadsheetApp.getActiveSpreadsheet) .getActiveSheet();
+var date = new Date();
+var username = e.parameter.username;
+var content = e.parameter.content;
+sheet. appendRow([date, username, content]) ;
+return ContentService.createTextoutput（"投稿が完了しました！"）；
+｝
 ```
