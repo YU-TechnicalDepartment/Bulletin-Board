@@ -55,5 +55,5 @@ GitHubPageを公開して自分が管理者の掲示板の完成です。
 ・それぞれの投稿に投稿ナンバーをつけました。  
 ・それぞれの投稿に報告ボタンを実装され、Googleフォームで報告できるようになりました。
 # 貢献者
-<img src="YU-TechnicalDepartment" width="50"><img src="Copilot" width="50">
+<img src="YU-TechnicalDepartment" width="50"><img src="Copilot" width="50">  
 ありがとうございます。
