@@ -42,6 +42,11 @@ function doPost(e) {
 ```
 <form id="postForm" action="さっきコピーしたURL" method="POST">
 ```
+また、  
+94行目のプログラムを以下に変更します。
+```
+const response = await fetch('さっきコピーしたURL');
+```
 さっきコピーしたURLの部分は、ちゃんと置き換えておきます。
 ### 列の準備
 1行目からはデータを抽出しませんのでわかりやすい列を作っておきます。
