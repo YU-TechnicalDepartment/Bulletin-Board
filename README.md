@@ -43,7 +43,7 @@ function doPost(e) {
 <form id="postForm" action="さっきコピーしたURL" method="POST">
 ```
 また、  
-94行目のプログラムを以下に変更します。
+94行目のプログラムを、以下に変更します。
 ```
 const response = await fetch('さっきコピーしたURL');
 ```
