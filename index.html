@@ -1,160 +1,165 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>掲示板</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    #posts { list-style-type: none; padding: 0; }
-    .post { 
-      margin-bottom: 20px; 
-      border-bottom: 1px solid #ddd; 
-      padding-bottom: 10px; 
-      position: relative; 
-    }
-    .post-title { font-weight: bold; font-size: 1.5em; }
-    .post-content { 
-      margin-top: 5px; 
-      white-space: pre-wrap; 
-      word-wrap: break-word; 
-    }
-    .post-date, .post-number { 
-      font-size: 0.9em; 
-      color: #888; 
-    }
-    .post-number { 
-      position: absolute; 
-      bottom: 0; 
-      right: 0; 
-    }
-    .report-button { 
-      position: absolute; 
-      top: 0; 
-      right: 0; 
-      background-color: #ddd; 
-      color: #555; 
-      border: none; 
-      font-size: 0.8em; 
-      padding: 5px 10px; 
-      border-radius: 5px; 
-      cursor: pointer; 
-    }
-    .report-button:hover { 
-      background-color: #ccc; 
-    }
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 15px;
-      margin-top: 10px;
-      box-sizing: border-box;
-      border-radius: 10px;
-      font-size: 16px;
-      border: 2px solid #000;
-    }
-    textarea {
-      height: 300px;
-      resize: none;
-    }
-    button {
-      background-color: #26a79a;
-      color: white;
-      padding: 15px 20px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 18px;
-    }
-    button:hover {
-      background-color: #1f877b;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>掲示板</title>
+    <style>
+        /* 既存のスタイル */
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #posts { list-style-type: none; padding: 0; }
+        .post { 
+            margin-bottom: 20px; 
+            border-bottom: 1px solid #ddd; 
+            padding-bottom: 10px; 
+            position: relative; 
+        }
+        .post-title { font-weight: bold; font-size: 1.5em; }
+        .post-content { 
+            margin-top: 5px; 
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+        }
+        .post-date, .post-number { 
+            font-size: 0.9em; 
+            color: #888; 
+        }
+        .post-number { 
+            position: absolute; 
+            bottom: 0; 
+            right: 0; 
+        }
+        .report-button { 
+            position: absolute; 
+            top: 0; 
+            right: 0; 
+            background-color: #ddd; 
+            color: #555; 
+            border: none; 
+            font-size: 0.8em; 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+        .report-button:hover { 
+            background-color: #ccc; 
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            font-size: 16px;
+            border: 2px solid #000;
+        }
+        textarea {
+            height: 300px;
+            resize: none;
+        }
+        button {
+            background-color: #26a79a;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #1f877b;
+        }
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-  <h1>掲示板</h1>
-  <form id="postForm" action="https://script.google.com/macros/s/AKfycbxdCarkggYZJvshEx07ItNVIV2B3zQ4N910AIjWsUyQ_IGCmo51Gceq_uqimJS1C365eA/exec" method="POST">
-    <label for="username">ユーザー名:</label>
-    <input type="text" id="username" name="username" placeholder="ユーザー名" required>
-    <br><br>
-    <label for="content">投稿内容:</label>
-    <textarea id="content" name="content" placeholder="内容" required></textarea>
-    <br><br>
-    <!-- Cloudflare Turnstile のウィジェット -->
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAABCC0T2gVH_KcEv0"></div>
-    <br><br>
-    <button type="submit">投稿</button>
-  </form>
-  <hr>
-  <ul id="posts"></ul>
-  
-  <!-- Cloudflare Turnstile のスクリプト -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  <script>
-    async function fetchPosts() {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxdCarkggYZJvshEx07ItNVIV2B3zQ4N910AIjWsUyQ_IGCmo51Gceq_uqimJS1C365eA/exec');
-      let posts = await response.json();
-      
-      // スプレッドシートの項目行を除外
-      posts = posts.slice(1);
-      
-      const postsDiv = document.getElementById("posts");
-      postsDiv.innerHTML = ''; // 現在の投稿をクリア
+    <h1>掲示板</h1>
+    <form id="postForm" action="https://script.google.com/macros/s/AKfycbxdCarkggYZJvshEx07ItNVIV2B3zQ4N910AIjWsUyQ_IGCmo51Gceq_uqimJS1C365eA/exec" method="POST">
+        <label for="username">ユーザー名:</label>
+        <input type="text" id="username" name="username" placeholder="ユーザー名" required>
+        <br><br>
+        <label for="content">投稿内容:</label>
+        <textarea id="content" name="content" placeholder="内容" required></textarea>
+        <br><br>
+        <div class="g-recaptcha" data-sitekey="6LejEAArAAAAADx9UjaDcJnWCcAqx4-gFHSHlXeQ"></div>
+        <br>
+        <button type="submit">投稿</button>
+    </form>
+    <hr>
+    <ul id="posts"></ul>
+    <script>
+        async function fetchPosts() {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxdCarkggYZJvshEx07ItNVIV2B3zQ4N910AIjWsUyQ_IGCmo51Gceq_uqimJS1C365eA/exec');
+            let posts = await response.json();
 
-      if (posts.length === 0) {
-        postsDiv.innerHTML = `<p>まだ投稿がありません。</p>`;
-      } else {
-        posts.reverse().forEach((post, index) => { // 最新の投稿が先頭に
-          if (post[1] && post[2] && post[0]) {
-            const postElement = document.createElement("div");
-            postElement.classList.add("post");
+            // スプレッドシートの項目行を除外
+            posts = posts.slice(1);
 
-            const postNumber = `#${posts.length - index}`;
-            const username = post[1];
-            const content = post[2].replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            const date = new Date(post[0]);
-            const formattedDate = isNaN(date) ? "" : date.toLocaleString();
+            const postsDiv = document.getElementById("posts");
 
-            const reportUrl = `https://docs.google.com/forms/d/e/1FAIpQLSe_gcI4CYjBM-ZGsIR5Q_nd0aquUixz7LixaqzfeuUjEowliQ/viewform?usp=pp_url&entry.1458296354=${encodeURIComponent(postNumber)}`;
+            postsDiv.innerHTML = ''; // 現在の投稿をクリア
 
-            postElement.innerHTML = `
-              <p>
-                <strong>${username}</strong>: <span class="post-content">${content}</span>
-                <br>
-                <span class="post-date">${formattedDate}</span>
-                <span class="post-number">${postNumber}</span>
-                <button class="report-button" onclick="window.open('${reportUrl}', '_blank')">報告</button>
-              </p>`;
-            postsDiv.appendChild(postElement);
-          }
+            if (posts.length === 0) {
+                postsDiv.innerHTML = `<p>まだ投稿がありません。</p>`;
+            } else {
+                posts.reverse().forEach((post, index) => { // 最新の投稿を先頭に
+                    if (post[1] && post[2] && post[0]) {
+                        const postElement = document.createElement("div");
+                        postElement.classList.add("post");
+
+                        const postNumber = `#${posts.length - index}`; // 投稿番号
+                        const username = post[1];
+                        const content = post[2].replace(/</g, "&lt;").replace(/>/g, "&gt;"); // HTMLエスケープ
+                        const date = new Date(post[0]);
+
+                        // 日付をフォーマット
+                        const formattedDate = isNaN(date) ? "" : date.toLocaleString();
+
+                        // 報告ボタンの機能を追加
+                        const reportUrl = `https://docs.google.com/forms/d/e/1FAIpQLSe_gcI4CYjBM-ZGsIR5Q_nd0aquUixz7LixaqzfeuUjEowliQ/viewform?usp=pp_url&entry.1458296354=${encodeURIComponent(postNumber)}`;
+
+                        postElement.innerHTML = `
+                            <p>
+                                <strong>${username}</strong>: <span class="post-content">${content}</span>
+                                <br>
+                                <span class="post-date">${formattedDate}</span>
+                                <span class="post-number">${postNumber}</span>
+                                <button class="report-button" onclick="window.open('${reportUrl}', '_blank')">報告</button>
+                            </p>`;
+                        postsDiv.appendChild(postElement);
+                    }
+                });
+            }
+        }
+
+        document.getElementById('postForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const button = event.target.querySelector('button');
+            button.disabled = true; // ボタンを無効化
+
+            // reCAPTCHAトークンを取得
+            const recaptchaResponse = grecaptcha.getResponse();
+
+            if (!recaptchaResponse) {
+                alert("reCAPTCHA認証が完了していません。");
+                button.disabled = false; // ボタンを再有効化
+                return;
+            }
+
+            const formData = new FormData(event.target);
+            formData.append('g-recaptcha-response', recaptchaResponse); // reCAPTCHAトークンを追加
+
+            await fetch(event.target.action, {
+                method: 'POST',
+                body: formData
+            });
+            button.disabled = false; // ボタンを再び有効化
+            event.target.reset(); // フォームをリセット
+            grecaptcha.reset(); // reCAPTCHAをリセット
+            fetchPosts(); // 投稿内容を再読み込み
         });
-      }
-    }
 
-    document.getElementById('postForm').addEventListener('submit', async function(event) {
-      event.preventDefault();
-
-      // Turnstile の認証結果を取得（自動で hidden input "cf-turnstile-response" にトークンが設定される）
-      const tokenInput = document.querySelector('[name="cf-turnstile-response"]');
-      if (!tokenInput || !tokenInput.value) {
-        alert("認証を完了してください。");
-        return;
-      }
-      
-      const button = event.target.querySelector('button');
-      button.disabled = true; // ボタンを無効化
-      const formData = new FormData(event.target);
-      
-      await fetch(event.target.action, {
-        method: 'POST',
-        body: formData
-      });
-      
-      button.disabled = false; // ボタンを再び有効化
-      event.target.reset(); // フォームをリセット
-      fetchPosts(); // 投稿内容を再読み込み
-    });
-
-    document.addEventListener('DOMContentLoaded', fetchPosts);
-  </script>
+        document.addEventListener('DOMContentLoaded', fetchPosts);
+    </script>
 </body>
 </html>
