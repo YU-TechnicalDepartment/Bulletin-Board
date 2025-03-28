@@ -68,5 +68,5 @@ Cloudflare認証を導入しました。
 ## 2025/03/26
 Cloudflare認証ができないという事例が上がったため、Google reCAPTCHAに変更しました。
 # 貢献者
-<img src="YU-TechnicalDepartment" width="50"><img src="Copilot" width="50">  
+<img src="YU-TechnicalDepartment" width="50"> <img src="sadaramagura" width="50"> <img src="Copilot" width="50">  
 ご協力いただき、ありがとうございます。
