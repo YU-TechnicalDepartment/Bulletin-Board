@@ -67,6 +67,9 @@ GitHubPageを公開して自分が管理者の掲示板の完成です。
 Cloudflare認証を導入しました。
 ## 2025/03/26
 Cloudflare認証ができないという事例が上がったため、Google reCAPTCHAに変更しました。
+## 2025/03/28
+URLを以下に変更しました。以前のURLにアクセスした場合でも、自動でリダイレクトされます。  
+https://gamma.f5.si
 # 貢献者
 <img src="YU-TechnicalDepartment" width="50"> <img src="sadaramagura" width="50"> <img src="Copilot" width="50">  
 ご協力いただき、ありがとうございます。
