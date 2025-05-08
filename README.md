@@ -70,6 +70,9 @@ Cloudflare認証ができないという事例が上がったため、Google reC
 ## 2025/03/28
 URLを以下に変更しました。以前のURLにアクセスした場合でも、自動でリダイレクトされます。  
 https://gamma.f5.si
+## 2025/05/07
+ファビコンを追加しました。  
+その他、再度Googleにクローリング申し出しました。
 # 貢献者
 <img src="YU-TechnicalDepartment" width="50"> <img src="sadaramagura" width="50"> <img src="Copilot" width="50">  
 ご協力いただき、ありがとうございます。
