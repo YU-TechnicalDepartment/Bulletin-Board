@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://js.pusher.com/beams/2.1.0/push-notifications-cdn.js"></script>
+<script>
+  const beamsClient = new PusherPushNotifications.Client({
+    instanceId: '1581f5ad-493b-4aef-9883-00806d8cf100',
+  });
+
+  beamsClient.start()
+    .then(() => beamsClient.addDeviceInterest('hello'))  // 通知チャンネルを登録
+    .then(() => console.log('Successfully registered and subscribed!'))
+    .catch(console.error);
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/favicon.png">
     <title>掲示板</title>
