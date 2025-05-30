@@ -80,4 +80,5 @@ https://gamma.f5.si
 また、ホーム画面に追加した時ネイティブアプリとして動作するようになりました。
 # 貢献者
 <img src="YU-TechnicalDepartment" width="50"> <img src="sadaramagura" width="50"> <img src="Copilot" width="50">  
-ご協力いただき、ありがとうございます。
+ご協力いただき、ありがとうございます。  
+また、アイデアもお願いします。
