@@ -1,5 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #topToast {
+            position: fixed;
+            z-index: 9999;
+            display: flex;
+            top: -140px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 100%;
+            max-width: 600px;
+            padding: 20px 25px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, rgba(189,185,255,1) 0%, rgba(103,184,255,1) 100%);
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+            filter: drop-shadow(0px 2px 8px #ddd);
+            transition: 0.8s ease-in-out;
+        }
+        #topToast.show { top: 40px; }
+        .topToastMessege p { color: #000; font-size: 0.9rem; line-height: 1.7; margin: 0; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <!-- トップ通知 -->
+    <div id="topToast">
+        <div class="topToastMessege">
+            <p>この掲示板に、返信機能を実装したいと考えております。ご協力いただける方は、
+                <a href="https://github.com/YU-TechnicalDepartment/Bulletin-Board" target="_blank">GitHubリポジトリ</a> をフォークし、編集してください。</p>
+        </div>
+    </div>
+
+    <script>
+        // ページのロード完了後、トップ通知を表示
+        window.addEventListener('load', () => {
+            const toast = document.getElementById("topToast");
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 4500); // 4.5秒後に非表示
+        });
+    </script>
+
+</body>
 <head>
     <meta charset="UTF-8">
     <link rel="manifest" href="manifest.json">
