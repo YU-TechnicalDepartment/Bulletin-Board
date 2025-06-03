@@ -11,6 +11,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
+      /* 初期状態は localStorage または後から設定した背景画像が適用される */
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -85,7 +86,7 @@
       background-color: #1f877b;
     }
 
-    /* 設定ボタン（カスタム歯車アイコン Setup.png）のスタイル */
+    /* 設定ボタン（カスタム歯車アイコン：直下のSetup.pngを使用）のスタイル */
     .settings-button {
       position: fixed;
       bottom: 20px;
@@ -263,7 +264,7 @@
     const bgOptionsDiv = document.getElementById('bg-options');
 
     // 背景候補の配列
-    // label：表示用テキスト／画像のalt、file：ファイル名。fileが"none"の場合は背景を解除します。
+    // label：表示用テキスト／画像のalt、file：ファイル名。fileが"none"の場合は背景解除
     const backgroundCandidates = [
       { label: "なし", file: "none" },
       { label: "背景1", file: "bg1.jpg" },
@@ -305,7 +306,7 @@
       });
     });
 
-    // モーダルを閉じる
+    // モーダルを閉じる動作
     closeModal.addEventListener('click', () => {
       modal.style.display = 'none';
     });
@@ -315,7 +316,7 @@
         modal.style.display = 'none';
       }
     });
-    // ページ読み込み時に以前選択した背景があれば設定を反映
+    // ページ読み込み時に背景を反映
     window.addEventListener('load', () => {
       const selectedBg = localStorage.getItem('selectedBackground');
       if (selectedBg) {
@@ -324,6 +325,10 @@
         } else {
           document.body.style.backgroundImage = `url('background/${selectedBg}')`;
         }
+      } else {
+        // 選択が無い場合、バックグラウンドフォルダ内のデフォルト背景を設定
+        document.body.style.backgroundImage = `url('background/bg1.jpg')`;
+        localStorage.setItem('selectedBackground', 'bg1.jpg');
       }
     });
   </script>
