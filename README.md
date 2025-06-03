@@ -81,6 +81,9 @@ https://gamma.f5.si
 ## 2025/06/03
 利用者(yir001さん)のアイデアで、背景変更機能を実装しました。  
 yir001さん、ありがとうございます。
+## 2025/06/04
+利用者(ぽんづさん)のアイデアで、背景端末挿入機能を実装しました。
+ぽんづさん、ありがとうございます。
 # 貢献者
 <img src="YU-TechnicalDepartment" width="50"> <img src="sadaramagura" width="50"> <img src="Copilot" width="50">  
 ご協力いただき、ありがとうございます。  
