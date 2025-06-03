@@ -98,6 +98,13 @@
       cursor: pointer;
       z-index: 1000;
     }
+    /* 設定アイコン画像が押し潰されず、正方形に収まるように */
+    .settings-button img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
 
     /* モーダルウィンドウのスタイル */
     .modal {
@@ -162,7 +169,7 @@
 
   <!-- 設定ボタン（カスタム歯車アイコン：直下のSetup.pngを使用） -->
   <button class="settings-button" id="open-settings">
-    <img src="Setup.png" alt="設定" style="width:100%; height:100%; border-radius:50%;">
+    <img src="Setup.png" alt="設定">
   </button>
 
   <!-- 背景変更用のモーダル -->
