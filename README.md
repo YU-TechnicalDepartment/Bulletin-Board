@@ -86,6 +86,8 @@ yir001さん、ありがとうございます。
 ぽんづさん、ありがとうございます。
 ## 2025/06/07
 返信機能を追加しました。
+# API
+現在、APIを作成中です。しばらくお待ちください。
 # 貢献者
 <img src="YU-TechnicalDepartment" width="50"> <img src="sadaramagura" width="50"> <img src="Copilot" width="50">  
 ご協力いただき、ありがとうございます。  
