@@ -84,6 +84,8 @@ yir001さん、ありがとうございます。
 ## 2025/06/04
 利用者(ぽんづさん)のアイデアで、背景端末挿入機能を実装しました。
 ぽんづさん、ありがとうございます。
+## 2025/06/07
+返信機能を追加しました。
 # 貢献者
 <img src="YU-TechnicalDepartment" width="50"> <img src="sadaramagura" width="50"> <img src="Copilot" width="50">  
 ご協力いただき、ありがとうございます。  
