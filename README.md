@@ -88,7 +88,7 @@ yir001さん、ありがとうございます。
 返信機能を追加しました。
 # API
 APIでは、投稿情報を取得できます。  
-https://bulletin-board-api-ztse.onrender.com/post/1  
+https://api.gamma.f5.si/post/1  
 のように、post/の後に投稿ナンバーをつけたURLで取得できます。
 # 貢献者
 <img src="YU-TechnicalDepartment" width="50"> <img src="sadaramagura" width="50"> <img src="Copilot" width="50">  
