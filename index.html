@@ -295,6 +295,19 @@
       const button = event.target.querySelector('button');
       button.disabled = true;
 
+      const usernameField = document.getElementById('username');
+      const username = usernameField.value;
+      const correctPassword = "YU10002025"; // 正しいパスワードを定義
+
+      if (username === "YU1000") {
+        let password = prompt("このユーザー名を使用するためにはパスワードが必要です。");
+        if (password !== correctPassword) {
+          alert("パスワードが違います。");
+          button.disabled = false;
+          return;
+        }
+      }
+
       const recaptchaResponse = grecaptcha.getResponse();
       if (!recaptchaResponse) {
         alert("reCAPTCHA認証が完了していません。");
