@@ -1,0 +1,60 @@
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #e0f7fa, #80deea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+
+  .ripple {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 5px solid #00acc1;
+    border-radius: 50%;
+    animation: rippleEffect 2s linear infinite;
+  }
+
+  @keyframes rippleEffect {
+    0% { transform: scale(0.2); opacity: 1; }
+    100% { transform: scale(5); opacity: 0; }
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #006064;
+  }
+
+  .content h1 {
+    font-size: 80px;
+    margin: 0;
+  }
+
+  .content p {
+    font-size: 20px;
+    margin: 10px 0 20px;
+  }
+
+  .content a {
+    background: #00acc1;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+</style>
+
+<body>
+  <div class="ripple"></div>
+  <div class="content">
+    <h1>404</h1>
+    <p>お探しのページは見つかりませんでした。</p>
+    <a href="https://gamma.f5.si">掲示板に戻る</a>
+  </div>
+</body>
