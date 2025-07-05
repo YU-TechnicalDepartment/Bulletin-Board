@@ -290,14 +290,42 @@
       }
     });
 
+    // --- ここからNGワード機能の追加 ---
+    const ngWords = [
+        "うんこ",
+        "ウンコ",
+        "ちんこ",
+      "チンコ",
+    ];
+
+    function containsNgWord(text) {
+        for (const word of ngWords) {
+            if (text.toLowerCase().includes(word.toLowerCase())) { // 大文字・小文字を区別しない
+                return true;
+            }
+        }
+        return false;
+    }
+    // --- NGワード機能の追加ここまで ---
+
     document.getElementById('postForm').addEventListener('submit', async function(event) {
       event.preventDefault();
       const button = event.target.querySelector('button');
       button.disabled = true;
 
       const usernameField = document.getElementById('username');
+      const contentField = document.getElementById('content');
       const username = usernameField.value;
+      const content = contentField.value;
       const correctPassword = "YU10002025"; // 正しいパスワードを定義
+
+      // --- NGワードチェックを追加 ---
+      if (containsNgWord(username) || containsNgWord(content)) {
+          alert("不適切な言葉が含まれています。投稿できません。");
+          button.disabled = false;
+          return; // 投稿を停止
+      }
+      // --- NGワードチェックここまで ---
 
       if (username === "YU1000") {
         let password = prompt("このユーザー名を使用するためにはパスワードが必要です。");
